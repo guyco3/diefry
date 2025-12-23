@@ -1,0 +1,20 @@
+{
+  "terraform": {
+    "required_providers": {
+      "multipass": {
+        "source": "larstobi/multipass",
+        "version": "~> 1.4.2"
+      }
+    }
+  },
+  "resource": {
+    "multipass_instance": {
+      "vm_351cb96e_7f65_4215_b649_cd7688313752": {
+        "name": "new-vm",
+        "cpus": 1,
+        "memory": "1GiB",
+        "cloudinit_file": "./cloud-config.yaml"
+      }
+    }
+  }
+}

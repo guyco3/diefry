@@ -1,0 +1,6 @@
+services:
+  service_573728ba_2925_485b_bd8d_aebb50b84ddb:
+    image: traefik/whoami
+    ports:
+      - "80:80"
+    restart: always
