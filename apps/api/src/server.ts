@@ -3,11 +3,14 @@ import { createServer } from 'http';
 import { Server } from 'socket.io';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import path from 'path';
 import { generateDockerCompose, generateNginxConfig } from './engine/config-gen';
 import { streamDeploy } from './ssh/ssh-manager';
 import { GraphState } from '@infra-flow/types';
 
-dotenv.config();
+// Prefer loading the repo-root .env so running from `apps/api` still picks it up
+const envPath = path.resolve(__dirname, '../../../.env');
+dotenv.config({ path: envPath });
 
 const app = express();
 const httpServer = createServer(app);
@@ -30,7 +33,8 @@ app.post('/deploy', async (req, res) => {
       nginx: generateNginxConfig(vmServices as any, edges || [])
     };
     try {
-      await streamDeploy(vm.data.ipAddress, vm.data.sshUser, configs, io);
+      const sshUser = (vm.data && vm.data.sshUser) ? vm.data.sshUser : 'ubuntu';
+      await streamDeploy(vm.data.ipAddress, sshUser, configs, io);
     } catch (e: any) {
       io.emit('deploy-log', { text: `Deployment failed for ${vm.data.ipAddress}: ${e.message}`, type: 'error' });
     }

@@ -1,11 +1,21 @@
 import { ServiceNode, InfraEdge } from '@infra-flow/types';
 
 export const generateDockerCompose = (services: ServiceNode[]) => {
-  const body = services.map(s => `
-  ${s.id}:
-    ${s.data.serviceType === 'custom-git' ? `build: ${s.data.gitRepo}` : `image: ${s.data.serviceType}`}
-    ports: ["${s.data.internalPort}:${s.data.internalPort}"]
-    restart: always`).join('');
+  const body = services.map(s => {
+    let imageOrBuild = '';
+    if (s.data.serviceType === 'whoami') {
+      imageOrBuild = `image: traefik/whoami`;
+    } else if (s.data.serviceType === 'custom-git') {
+      imageOrBuild = `build: ${s.data.gitRepo || '.'}`;
+    } else {
+      imageOrBuild = `image: ${s.data.serviceType}`;
+    }
+
+    const exposedPort = s.data.serviceType === 'whoami' ? 80 : s.data.internalPort;
+
+    return `\n  ${s.id}:\n    ${imageOrBuild}\n    ports:\n      - "${s.data.internalPort}:${exposedPort}"\n    restart: always`;
+  }).join('');
+
   return `version: '3.8'\nservices:${body}`;
 };
 

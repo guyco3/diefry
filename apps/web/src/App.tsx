@@ -68,6 +68,12 @@ export default function App() {
           >
             🌐 NGINX
           </button>
+          <button 
+            onClick={() => addNode('service-node', { serviceType: 'whoami', label: 'Debug Tool', internalPort: 80 })}
+            className="flex items-center gap-2 px-3 py-1.5 text-xs font-bold hover:bg-slate-50 rounded text-purple-600"
+          >
+            🔍 WHOAMI
+          </button>
         </Panel>
 
         <Panel position="top-right">

@@ -5,6 +5,7 @@ import { ServiceNode as ServiceNodeType } from '@infra-flow/types';
 const ICON_MAP: Record<string, string> = {
   'custom-git': '🚀',
   'nginx': '🌐',
+  'whoami': '🔍',
   'redis': '🧠',
   'postgres': '🐘'
 };

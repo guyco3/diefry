@@ -34,6 +34,14 @@ export function ConfigSidebar() {
                 onChange={(e) => updateNodeData(selectedNode.id, { ipAddress: e.target.value })}
               />
             </div>
+            <div>
+              <label className="block text-xs font-bold text-slate-700 mb-1">SSH User</label>
+              <input
+                className="w-full rounded border p-2 text-sm"
+                value={selectedNode.data.sshUser || 'ubuntu'}
+                onChange={(e) => updateNodeData(selectedNode.id, { sshUser: e.target.value })}
+              />
+            </div>
           </>
         ) : (
           <>

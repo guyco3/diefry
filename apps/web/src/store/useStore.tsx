@@ -39,7 +39,7 @@ export const useStore = create<GraphState & StoreActions>((set, get) => ({
       type,
       position: { x: Math.random() * 400, y: Math.random() * 400 },
       data: type === 'vm-node'
-        ? { label: 'New VM', ipAddress: '', cpu: 1, ram: '1G', disk: '5G', ...initialData }
+        ? { label: 'New VM', ipAddress: '', sshUser: 'ubuntu', cpu: 1, ram: '1G', disk: '5G', ...initialData }
         : { label: 'New Service', serviceType: 'custom-git', internalPort: 3000, ...initialData },
       ...(type === 'service-node' ? { vmId: null } : {})
     };

@@ -22,7 +22,7 @@ export interface ServiceNode extends BaseNode {
   type: 'service-node';
   vmId: string | null; // The pointer to the parent VM
   data: {
-    serviceType: 'custom-git' | 'nginx' | 'redis' | 'postgres';
+    serviceType: 'custom-git' | 'nginx' | 'redis' | 'postgres' | 'whoami';
     internalPort: number;
     gitRepo?: string;
   };
