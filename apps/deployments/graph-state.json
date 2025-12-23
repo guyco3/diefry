@@ -1,0 +1,57 @@
+{
+  "nodes": [
+    {
+      "id": "6e80a1f8-f73c-4f9c-8628-944341ba1837",
+      "type": "vm-node",
+      "position": {
+        "x": 78.63131882437727,
+        "y": 116.64776014005287
+      },
+      "data": {
+        "label": "New VM",
+        "ipAddress": "192.168.2.10",
+        "sshUser": "ubuntu",
+        "cpu": 1,
+        "ram": "1G",
+        "disk": "5G",
+        "status": "online"
+      },
+      "width": 479,
+      "height": 426,
+      "selected": false,
+      "dragging": false,
+      "positionAbsolute": {
+        "x": 78.63131882437727,
+        "y": 116.64776014005287
+      },
+      "style": {
+        "width": 479,
+        "height": 426
+      },
+      "resizing": false
+    },
+    {
+      "id": "4b428c09-8c8c-4113-8a04-66262bcb7c92",
+      "type": "service-node",
+      "position": {
+        "x": 156.97169888966587,
+        "y": 250.52363927899643
+      },
+      "data": {
+        "label": "Debug Tool",
+        "serviceType": "whoami",
+        "internalPort": 320
+      },
+      "vmId": "6e80a1f8-f73c-4f9c-8628-944341ba1837",
+      "width": 224,
+      "height": 120,
+      "selected": true,
+      "positionAbsolute": {
+        "x": 156.97169888966587,
+        "y": 250.52363927899643
+      },
+      "dragging": false
+    }
+  ],
+  "edges": []
+}

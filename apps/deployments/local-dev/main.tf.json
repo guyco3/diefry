@@ -9,7 +9,7 @@
   },
   "resource": {
     "multipass_instance": {
-      "vm_351cb96e_7f65_4215_b649_cd7688313752": {
+      "vm_6e80a1f8_f73c_4f9c_8628_944341ba1837": {
         "name": "new-vm",
         "cpus": 1,
         "memory": "1GiB",
