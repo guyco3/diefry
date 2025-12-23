@@ -1,5 +1,67 @@
 # InfraFlow — Local MVP (Multipass Orchestrator)
 
+InfraFlow Local-MVP is a local Multipass VM orchestrator with a visual canvas (frontend) and a TypeScript API (backend) that generates Docker Compose + Nginx config and reconciles state over SSH.
+
+Requirements
+- Node.js 18+ and pnpm
+- (Optional) Multipass for creating local VMs
+
+Quick start
+
+1. Install all workspace dependencies from the repository root:
+
+```bash
+pnpm install
+```
+
+2. Start the frontend (Vite dev server):
+
+```bash
+pnpm --filter @infra-flow/web dev
+```
+
+3. Start the API server (Socket.IO + SSH runner):
+
+```bash
+pnpm --filter @infra-flow/api dev
+```
+
+Environment
+- Create a `.env` file at the repository root with your SSH key path:
+
+```env
+SSH_KEY_PATH=/Users/yourname/.ssh/id_rsa
+```
+
+Usage
+- Open the frontend at `http://localhost:5173` (Vite will print the exact URL).
+- Build a graph of `VM` nodes and `Service` nodes. Use the toolbar to add nodes, drag Service nodes into a VM to parent them, then click `DEPLOY ALL`.
+- The frontend listens to `deploy-log` Socket.IO events from the API and shows streamed output in the Deployment Terminal.
+
+Multipass (optional)
+
+Create a test VM locally with Multipass:
+
+```bash
+brew install --cask multipass
+multipass launch -n infra-vm --mem 2G --cpus 2 --disk 10G
+multipass info infra-vm
+```
+
+Copy the VM IP into a VM node in the canvas and set `SSH_KEY_PATH` so the API can SSH into the VM.
+
+Troubleshooting
+- If a command fails, check the package.json scripts in `apps/web` and `apps/api`.
+- If SSH auth fails during deployment, verify the VM has your public key in `~/.ssh/authorized_keys`.
+- If React Flow warns about container size, ensure the canvas container has an explicit width/height (the app uses full viewport by default).
+
+Want a demo seed?
+- If you want a pre-seeded graph to try the UX immediately, tell me and I will add a demo initial state to the store.
+
+License
+- This project is provided under the repository LICENSE (see root). 
+# InfraFlow — Local MVP (Multipass Orchestrator)
+
 This workspace contains a minimal implementation of the InfraFlow Local-MVP.
 
 Quick start (macOS):
