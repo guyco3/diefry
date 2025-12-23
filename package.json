@@ -1,0 +1,9 @@
+{
+  "name": "infra-flow",
+  "private": true,
+  "version": "0.0.0",
+  "workspaces": ["apps/*", "packages/*"],
+  "scripts": {
+    "start:api": "pnpm --filter @infra-flow/api start"
+  }
+}

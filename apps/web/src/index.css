@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  background-color: #f8fafc;
+}
+
+/* React Flow custom styling overrides */
+.react-flow__handle {
+  border-radius: 4px !important;
+}
+
+.react-flow__edge-path {
+  stroke: #94a3b8;
+  stroke-width: 2.5;
+}
+
+.react-flow__controls {
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  border: none !important;
+}
+
+.react-flow__panel button {
+  transition: all 0.2s;
+}
